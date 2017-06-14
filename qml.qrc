@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>pages/History.qml</file>
+        <file>pages/FrmInit.qml</file>
+        <file>pages/camera.qml</file>
+        <file>images/voice.png</file>
+        <file>images/threedot.png</file>
+        <file>images/Screen1.png</file>
+        <file>images/micro.png</file>
+        <file>images/menu@4x.png</file>
+        <file>images/menu@3x.png</file>
+        <file>images/menu@2x.png</file>
+        <file>images/menu.png</file>
+        <file>images/keyboard.png</file>
+        <file>images/camera.png</file>
+        <file>images/back@4x.png</file>
+        <file>images/back@3x.png</file>
+        <file>images/back@2x.png</file>
+        <file>images/back.png</file>
+        <file>pages/About.qml</file>
+        <file>pages/Setting.qml</file>
+        <file>pages/Help.qml</file>
+        <file>images/next.png</file>
+        <file>images/Arrow2-2x.png</file>
+        <file>images/small-logo.png</file>
+        <file>pages/Privacy.qml</file>
+        <file>images/history_screen_1.png</file>
+        <file>images/history_screen_2.png</file>
+        <file>images/keyboard_screen_1.png</file>
+        <file>images/keyboard_screen_2.png</file>
+        <file>images/setting_screen_1.png</file>
+        <file>images/voice_screen_1.png</file>
+        <file>images/voice_screen_2.png</file>
+        <file>images/camera_screen_1.png</file>
+        <file>images/trash.png</file>
+    </qresource>
+</RCC>
