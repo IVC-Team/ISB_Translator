@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DQT_WEBVIEW_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -Iinclude -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I. -I/usr/local/Qt-5.7.1/mkspecs/linux-g++
+INCPATH       = -I. -Iinclude -Iinclude -Iinclude -Iinclude -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I. -I/usr/local/Qt-5.7.1/mkspecs/linux-g++
 QMAKE         = /usr/local/Qt-5.7.1/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = IsbTranslator1.0.0
 DISTDIR = /home/tinbuiwd/Desktop/sourceCode/IsbTranslator/.tmp/IsbTranslator1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/usr/local/Qt-5.7.1/lib -Wl,-rpath-link,/usr/local/Qt-5.7.1/lib
-LIBS          = $(SUBLIBS) -ltesseract -llept -L/usr/local/Qt-5.7.1/lib -lQt5Sql -lQt5WebView -lQt5Quick -lQt5Gui -lQt5Qml -lQt5Network -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/lib/ -ltesseract -llept -L/usr/local/Qt-5.7.1/lib -lQt5Sql -lQt5WebView -lQt5Quick -lQt5Gui -lQt5Qml -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -67,7 +67,11 @@ OBJECTS       = main.o \
 		moc_datalistview.o \
 		moc_imageview.o \
 		moc_imageviewercontroller.o
-DIST          = /usr/local/Qt-5.7.1/mkspecs/features/spec_pre.prf \
+DIST          = lib/libtesseract.a \
+		lib/libtesseract.so \
+		lib/libtesseract.so.4 \
+		lib/libtesseract.so.4.0.0 \
+		/usr/local/Qt-5.7.1/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-5.7.1/mkspecs/common/unix.conf \
 		/usr/local/Qt-5.7.1/mkspecs/common/linux.conf \
 		/usr/local/Qt-5.7.1/mkspecs/common/sanitize.conf \
@@ -228,7 +232,92 @@ DIST          = /usr/local/Qt-5.7.1/mkspecs/features/spec_pre.prf \
 		IsbTranslator.pro isbtranslator.h \
 		datalistview.h \
 		imageview.h \
-		imageviewercontroller.h main.cpp \
+		imageviewercontroller.h \
+		include/leptonica/allheaders.h \
+		include/leptonica/alltypes.h \
+		include/leptonica/array.h \
+		include/leptonica/arrayaccess.h \
+		include/leptonica/bbuffer.h \
+		include/leptonica/bilateral.h \
+		include/leptonica/bmf.h \
+		include/leptonica/bmfdata.h \
+		include/leptonica/bmp.h \
+		include/leptonica/ccbord.h \
+		include/leptonica/dewarp.h \
+		include/leptonica/endianness.h \
+		include/leptonica/environ.h \
+		include/leptonica/gplot.h \
+		include/leptonica/heap.h \
+		include/leptonica/imageio.h \
+		include/leptonica/jbclass.h \
+		include/leptonica/leptwin.h \
+		include/leptonica/list.h \
+		include/leptonica/morph.h \
+		include/leptonica/pix.h \
+		include/leptonica/ptra.h \
+		include/leptonica/queue.h \
+		include/leptonica/rbtree.h \
+		include/leptonica/readbarcode.h \
+		include/leptonica/recog.h \
+		include/leptonica/regutils.h \
+		include/leptonica/stack.h \
+		include/leptonica/stringcode.h \
+		include/leptonica/sudoku.h \
+		include/leptonica/watershed.h \
+		include/tesseract/apitypes.h \
+		include/tesseract/baseapi.h \
+		include/tesseract/basedir.h \
+		include/tesseract/capi.h \
+		include/tesseract/convolve.h \
+		include/tesseract/ctc.h \
+		include/tesseract/dotproductavx.h \
+		include/tesseract/dotproductsse.h \
+		include/tesseract/errcode.h \
+		include/tesseract/fileerr.h \
+		include/tesseract/fullyconnected.h \
+		include/tesseract/functions.h \
+		include/tesseract/genericvector.h \
+		include/tesseract/helpers.h \
+		include/tesseract/host.h \
+		include/tesseract/input.h \
+		include/tesseract/lstm.h \
+		include/tesseract/lstmrecognizer.h \
+		include/tesseract/lstmtrainer.h \
+		include/tesseract/ltrresultiterator.h \
+		include/tesseract/maxpool.h \
+		include/tesseract/memry.h \
+		include/tesseract/ndminx.h \
+		include/tesseract/network.h \
+		include/tesseract/networkbuilder.h \
+		include/tesseract/networkio.h \
+		include/tesseract/networkscratch.h \
+		include/tesseract/ocrclass.h \
+		include/tesseract/osdetect.h \
+		include/tesseract/pageiterator.h \
+		include/tesseract/parallel.h \
+		include/tesseract/params.h \
+		include/tesseract/platform.h \
+		include/tesseract/plumbing.h \
+		include/tesseract/publictypes.h \
+		include/tesseract/recodebeam.h \
+		include/tesseract/reconfig.h \
+		include/tesseract/renderer.h \
+		include/tesseract/resultiterator.h \
+		include/tesseract/reversed.h \
+		include/tesseract/serialis.h \
+		include/tesseract/series.h \
+		include/tesseract/simddetect.h \
+		include/tesseract/static_shape.h \
+		include/tesseract/stridemap.h \
+		include/tesseract/strngs.h \
+		include/tesseract/tesscallback.h \
+		include/tesseract/tfnetwork.h \
+		include/tesseract/thresholder.h \
+		include/tesseract/unichar.h \
+		include/tesseract/unicharcompress.h \
+		include/tesseract/unicharmap.h \
+		include/tesseract/unicharset.h \
+		include/tesseract/weightmatrix.h main.cpp \
 		isbtranslator.cpp \
 		datalistview.cpp \
 		imageview.cpp \
@@ -241,7 +330,7 @@ TARGET        = IsbTranslator
 first: all
 ####### Build rules
 
-$(TARGET):  $(OBJECTS)  
+$(TARGET): /home/tinbuiwd/Desktop/sourceCode/IsbTranslator/lib/libtesseract.a /home/tinbuiwd/Desktop/sourceCode/IsbTranslator/lib/liblept.a $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: IsbTranslator.pro /usr/local/Qt-5.7.1/mkspecs/linux-g++/qmake.conf /usr/local/Qt-5.7.1/mkspecs/features/spec_pre.prf \
@@ -594,7 +683,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents qml.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents isbtranslator.h datalistview.h imageview.h imageviewercontroller.h $(DISTDIR)/
+	$(COPY_FILE) --parents isbtranslator.h datalistview.h imageview.h imageviewercontroller.h include/leptonica/allheaders.h include/leptonica/alltypes.h include/leptonica/array.h include/leptonica/arrayaccess.h include/leptonica/bbuffer.h include/leptonica/bilateral.h include/leptonica/bmf.h include/leptonica/bmfdata.h include/leptonica/bmp.h include/leptonica/ccbord.h include/leptonica/dewarp.h include/leptonica/endianness.h include/leptonica/environ.h include/leptonica/gplot.h include/leptonica/heap.h include/leptonica/imageio.h include/leptonica/jbclass.h include/leptonica/leptwin.h include/leptonica/list.h include/leptonica/morph.h include/leptonica/pix.h include/leptonica/ptra.h include/leptonica/queue.h include/leptonica/rbtree.h include/leptonica/readbarcode.h include/leptonica/recog.h include/leptonica/regutils.h include/leptonica/stack.h include/leptonica/stringcode.h include/leptonica/sudoku.h include/leptonica/watershed.h include/tesseract/apitypes.h include/tesseract/baseapi.h include/tesseract/basedir.h include/tesseract/capi.h include/tesseract/convolve.h include/tesseract/ctc.h include/tesseract/dotproductavx.h include/tesseract/dotproductsse.h include/tesseract/errcode.h include/tesseract/fileerr.h include/tesseract/fullyconnected.h include/tesseract/functions.h include/tesseract/genericvector.h include/tesseract/helpers.h include/tesseract/host.h include/tesseract/input.h include/tesseract/lstm.h include/tesseract/lstmrecognizer.h include/tesseract/lstmtrainer.h include/tesseract/ltrresultiterator.h include/tesseract/maxpool.h include/tesseract/memry.h include/tesseract/ndminx.h include/tesseract/network.h include/tesseract/networkbuilder.h include/tesseract/networkio.h include/tesseract/networkscratch.h include/tesseract/ocrclass.h include/tesseract/osdetect.h include/tesseract/pageiterator.h include/tesseract/parallel.h include/tesseract/params.h include/tesseract/platform.h include/tesseract/plumbing.h include/tesseract/publictypes.h include/tesseract/recodebeam.h include/tesseract/reconfig.h include/tesseract/renderer.h include/tesseract/resultiterator.h include/tesseract/reversed.h include/tesseract/serialis.h include/tesseract/series.h include/tesseract/simddetect.h include/tesseract/static_shape.h include/tesseract/stridemap.h include/tesseract/strngs.h include/tesseract/tesscallback.h include/tesseract/tfnetwork.h include/tesseract/thresholder.h include/tesseract/unichar.h include/tesseract/unicharcompress.h include/tesseract/unicharmap.h include/tesseract/unicharset.h include/tesseract/weightmatrix.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp isbtranslator.cpp datalistview.cpp imageview.cpp imageviewercontroller.cpp $(DISTDIR)/
 
 
@@ -938,7 +1027,7 @@ moc_isbtranslator.cpp: /usr/local/Qt-5.7.1/include/QtCore/QObject \
 		/usr/local/Qt-5.7.1/include/QtSql/QSqlQuery \
 		isbtranslator.h \
 		/usr/local/Qt-5.7.1/bin/moc
-	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include isbtranslator.h -o moc_isbtranslator.cpp
+	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include isbtranslator.h -o moc_isbtranslator.cpp
 
 moc_datalistview.cpp: /usr/local/Qt-5.7.1/include/QtCore/QObject \
 		/usr/local/Qt-5.7.1/include/QtCore/qobject.h \
@@ -991,7 +1080,7 @@ moc_datalistview.cpp: /usr/local/Qt-5.7.1/include/QtCore/QObject \
 		/usr/local/Qt-5.7.1/include/QtCore/QString \
 		datalistview.h \
 		/usr/local/Qt-5.7.1/bin/moc
-	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include datalistview.h -o moc_datalistview.cpp
+	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include datalistview.h -o moc_datalistview.cpp
 
 moc_imageview.cpp: /usr/local/Qt-5.7.1/include/QtGui/QPainter \
 		/usr/local/Qt-5.7.1/include/QtGui/qpainter.h \
@@ -1151,7 +1240,7 @@ moc_imageview.cpp: /usr/local/Qt-5.7.1/include/QtGui/QPainter \
 		/usr/local/Qt-5.7.1/include/QtGui/QPixmap \
 		imageview.h \
 		/usr/local/Qt-5.7.1/bin/moc
-	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include imageview.h -o moc_imageview.cpp
+	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include imageview.h -o moc_imageview.cpp
 
 moc_imageviewercontroller.cpp: imageview.h \
 		/usr/local/Qt-5.7.1/include/QtGui/QPainter \
@@ -1494,7 +1583,7 @@ moc_imageviewercontroller.cpp: imageview.h \
 		/usr/local/Qt-5.7.1/include/QtSql/QSqlQuery \
 		imageviewercontroller.h \
 		/usr/local/Qt-5.7.1/bin/moc
-	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include imageviewercontroller.h -o moc_imageviewercontroller.cpp
+	/usr/local/Qt-5.7.1/bin/moc $(DEFINES) -I/usr/local/Qt-5.7.1/mkspecs/linux-g++ -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/home/tinbuiwd/Desktop/sourceCode/IsbTranslator/include -I/usr/local/Qt-5.7.1/include -I/usr/local/Qt-5.7.1/include/QtQuick -I/usr/local/Qt-5.7.1/include/QtGui -I/usr/local/Qt-5.7.1/include/QtQml -I/usr/local/Qt-5.7.1/include/QtNetwork -I/usr/local/Qt-5.7.1/include/QtSql -I/usr/local/Qt-5.7.1/include/QtCore -I/usr/local/Qt-5.7.1/include/QtWebView -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include imageviewercontroller.h -o moc_imageviewercontroller.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

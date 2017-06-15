@@ -3,8 +3,8 @@
 #include "imageview.h"
 #include <QQmlApplicationEngine>
 #include <QImage>
-#include <tesseract/baseapi.h>
-#include <leptonica/allheaders.h>
+#include <include/tesseract/baseapi.h>
+#include <include/leptonica/allheaders.h>
 #include <QDebug>
 #include <QObject>
 #include <QMap>

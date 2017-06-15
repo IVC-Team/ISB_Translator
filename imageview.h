@@ -2,8 +2,8 @@
 #define IMAGEVIEW_H
 
 #include <QPainter>
-#include <tesseract/baseapi.h>
-#include <leptonica/allheaders.h>
+#include <include/tesseract/baseapi.h>
+#include <include/leptonica/allheaders.h>
 #include <QDebug>
 #include <QQuickPaintedItem>
 #include <QImage>

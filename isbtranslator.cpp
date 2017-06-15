@@ -61,9 +61,8 @@ void IsbTranslator::query(QString txt,QString translateText,  QString lang1, QSt
     }
     qDebug() <<"close";
     db.close();
-    //refreshTable();
 
-   //this->close();
+
 }
 
 void IsbTranslator::dQuery()
